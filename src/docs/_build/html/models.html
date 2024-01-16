@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>models library &#8212; Detector Detection  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="models.interface library" href="models.interface.html" />
+    <link rel="prev" title="functions.ImageReadFunctions library" href="functions.ImageReadFunctions.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="models-library">
+<h1>models library<a class="headerlink" href="#models-library" title="Link to this heading">¶</a></h1>
+<section id="sub-library">
+<h2>Sub-library<a class="headerlink" href="#sub-library" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="models.interface.html">models.interface library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="models.interface.html#module-models.interface.ImageReader">ImageReader class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="models.interface.html#models.interface.ImageReader.ImageReader"><code class="docutils literal notranslate"><span class="pre">ImageReader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="models.interface.html#models.interface.ImageReader.ImageReader.ReadImage"><code class="docutils literal notranslate"><span class="pre">ImageReader.ReadImage()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-models.ReadNpy">
+<span id="readnpy-class"></span><h2>ReadNpy class<a class="headerlink" href="#module-models.ReadNpy" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.ReadNpy.ReadNpy">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.ReadNpy.</span></span><span class="sig-name descname"><span class="pre">ReadNpy</span></span><a class="reference internal" href="_modules/models/ReadNpy.html#ReadNpy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.ReadNpy.ReadNpy" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="models.interface.html#models.interface.ImageReader.ImageReader" title="models.interface.ImageReader.ImageReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageReader</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="models.ReadNpy.ReadNpy.ReadImage">
+<span class="sig-name descname"><span class="pre">ReadImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dataObjects.html#dataObjects.Settings.Settings" title="dataObjects.Settings.Settings"><span class="pre">Settings</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="dataObjects.html#dataObjects.ImageObject.ImageObject" title="dataObjects.ImageObject.ImageObject"><span class="pre">ImageObject</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/models/ReadNpy.html#ReadNpy.ReadImage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.ReadNpy.ReadNpy.ReadImage" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-models.ReadTiff">
+<span id="readtiff-class"></span><h2>ReadTiff class<a class="headerlink" href="#module-models.ReadTiff" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.ReadTiff.ReadTiff">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.ReadTiff.</span></span><span class="sig-name descname"><span class="pre">ReadTiff</span></span><a class="reference internal" href="_modules/models/ReadTiff.html#ReadTiff"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.ReadTiff.ReadTiff" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="models.interface.html#models.interface.ImageReader.ImageReader" title="models.interface.ImageReader.ImageReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageReader</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="models.ReadTiff.ReadTiff.ProcessImage">
+<span class="sig-name descname"><span class="pre">ProcessImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tifOpen</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">darkFolder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">AutoContrast</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ShowProcess</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">Mat</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/models/ReadTiff.html#ReadTiff.ProcessImage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.ReadTiff.ReadTiff.ProcessImage" title="Link to this definition">¶</a></dt>
+<dd><p>Takes image paths and process the image to a usable state.</p>
+<section id="extended-summary">
+<h3>Extended Summary<a class="headerlink" href="#extended-summary" title="Link to this heading">¶</a></h3>
+<p>Process the image by doing a series of sequences:
+1. open - dark = openResult
+2. detector - dark = detectorResult
+3. detectorResult / openResult
+4. if true: autocontrast</p>
+</section>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><cite>tifDetector : list[str]</cite></dt><dd><p>the paths for the detector images.</p>
+</dd>
+<dt><cite>tifOpen : list[str]</cite></dt><dd><p>the paths for the open images.</p>
+</dd>
+<dt><cite>darkFolder : str</cite></dt><dd><p>the path to the folder containing the dark image.</p>
+</dd>
+<dt><cite>AutoContrast : bool</cite>, <cite>optional</cite></dt><dd><p>this sets if autocontrast should be done or not before returning the image</p>
+</dd>
+<dt><cite>ShowProcess : bool</cite>, <cite>optional</cite></dt><dd><p>this sets the function to show every processed image.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><cite>list[cv2.Mat]</cite></dt><dd><p>a list containing all the processed images in order of distances.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="models.ReadTiff.ReadTiff.ReadImage">
+<span class="sig-name descname"><span class="pre">ReadImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dataObjects.html#dataObjects.Settings.Settings" title="dataObjects.Settings.Settings"><span class="pre">Settings</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="dataObjects.html#dataObjects.ImageObject.ImageObject" title="dataObjects.ImageObject.ImageObject"><span class="pre">ImageObject</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/models/ReadTiff.html#ReadTiff.ReadImage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.ReadTiff.ReadTiff.ReadImage" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-models.ReadTxt">
+<span id="readtxt-class"></span><h2>ReadTxt class<a class="headerlink" href="#module-models.ReadTxt" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.ReadTxt.ReadTxt">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.ReadTxt.</span></span><span class="sig-name descname"><span class="pre">ReadTxt</span></span><a class="reference internal" href="_modules/models/ReadTxt.html#ReadTxt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.ReadTxt.ReadTxt" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="models.interface.html#models.interface.ImageReader.ImageReader" title="models.interface.ImageReader.ImageReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">ImageReader</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="models.ReadTxt.ReadTxt.ReadImage">
+<span class="sig-name descname"><span class="pre">ReadImage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dataObjects.html#dataObjects.Settings.Settings" title="dataObjects.Settings.Settings"><span class="pre">Settings</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="dataObjects.html#dataObjects.ImageObject.ImageObject" title="dataObjects.ImageObject.ImageObject"><span class="pre">ImageObject</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/models/ReadTxt.html#ReadTxt.ReadImage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.ReadTxt.ReadTxt.ReadImage" title="Link to this definition">¶</a></dt>
+<dd><p>Searches a specific folder for any .txt files and converts them to images/numpy arrays.</p>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><cite>folder : str</cite></dt><dd><p>the folder path were each indivual file path will be extracted.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<dl>
+<dt><cite>tuple[list[cv2.Mat],list[float]]</cite></dt><dd><p>the first <cite>list[cv2.Mat]</cite> contains the detector images.</p>
+<p>the second <cite>list[float]</cite> contains the distances for marked by each file path.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-models.ReaderFactory">
+<span id="readerfactory-class"></span><h2>ReaderFactory class<a class="headerlink" href="#module-models.ReaderFactory" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.ReaderFactory.ReaderFactory">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.ReaderFactory.</span></span><span class="sig-name descname"><span class="pre">ReaderFactory</span></span><a class="reference internal" href="_modules/models/ReaderFactory.html#ReaderFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.ReaderFactory.ReaderFactory" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="models.ReaderFactory.ReaderFactory.CreateReader">
+<span class="sig-name descname"><span class="pre">CreateReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.ReaderType.ReaderType" title="dataObjects.enums.ReaderType.ReaderType"><span class="pre">ReaderType</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="models.interface.html#models.interface.ImageReader.ImageReader" title="models.interface.ImageReader.ImageReader"><span class="pre">ImageReader</span></a></span></span><a class="reference internal" href="_modules/models/ReaderFactory.html#ReaderFactory.CreateReader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.ReaderFactory.ReaderFactory.CreateReader" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Detector Detection</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Detector_detection.html">Detector_detection module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataObjects.html">dataObjects library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">functions library</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">models library</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="functions.ImageReadFunctions.html" title="previous chapter">functions.ImageReadFunctions library</a></li>
+      <li>Next: <a href="models.interface.html" title="next chapter">models.interface library</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Mustafa A..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/models.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dataObjects.LinearFit &#8212; Detector Detection  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=039e1c02" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for dataObjects.LinearFit</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">linear_model</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">dataObjects.Point</span> <span class="kn">import</span> <span class="n">Point</span>
+<span class="kn">from</span> <span class="nn">dataObjects.enums.Axis</span> <span class="kn">import</span> <span class="n">Axis</span>
+
+<div class="viewcode-block" id="LinearFit">
+<a class="viewcode-back" href="../../dataObjects.html#dataObjects.LinearFit.LinearFit">[docs]</a>
+<span class="k">class</span> <span class="nc">LinearFit</span><span class="p">:</span>
+    <span class="n">interpolationLimitUpper</span><span class="p">:</span><span class="nb">float</span>
+    <span class="n">interpolationLimitLower</span><span class="p">:</span><span class="nb">float</span>
+    <span class="n">extrapolationLimitLower</span><span class="p">:</span><span class="nb">float</span>
+    <span class="n">extrapolationLimitUpper</span><span class="p">:</span><span class="nb">float</span>
+    <span class="n">fit</span><span class="p">:</span><span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span>
+    <span class="n">shape</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+    <span class="n">medianStep</span><span class="p">:</span><span class="nb">float</span>
+    <span class="n">r</span><span class="p">:</span><span class="nb">float</span>
+    <span class="n">equation</span><span class="p">:</span><span class="nb">str</span>
+    <span class="n">axis</span><span class="p">:</span> <span class="n">Axis</span>
+    <span class="n">availableUpper</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Point</span><span class="p">]</span>
+    <span class="n">availableLower</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Point</span><span class="p">]</span>
+    <span class="n">extendable</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Point</span><span class="p">]</span>
+    <span class="n">line</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="n">Point</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">fit</span><span class="p">:</span><span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">,</span><span class="n">medianStep</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span><span class="n">interpolationLimitUpper</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span><span class="n">interpolationLimitLower</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span><span class="n">r</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span><span class="n">line</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="n">Point</span><span class="p">],</span><span class="n">shape</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span><span class="n">axis</span><span class="p">:</span><span class="n">Axis</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1">#Make copies because the variables are not necessarily static but reference</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fit</span> <span class="o">=</span> <span class="n">fit</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interpolationLimitLower</span> <span class="o">=</span> <span class="n">interpolationLimitLower</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">interpolationLimitUpper</span> <span class="o">=</span> <span class="n">interpolationLimitUpper</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">medianStep</span> <span class="o">=</span> <span class="n">medianStep</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">shape</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="o">=</span> <span class="n">axis</span>
+        
+
+        <span class="c1">#Create equation for rows </span>
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="o">==</span> <span class="n">Axis</span><span class="o">.</span><span class="n">X</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">equation</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;eq: y = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> • x + </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="o">.</span><span class="n">intercept_</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> ----------------- R^2: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="c1">#Create equation for columns</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">equation</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;eq: x = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> • y + </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="o">.</span><span class="n">intercept_</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2"> ----------------- R^2: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">r</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="c1">#Create limit for extrapolation as to not go out to the egde of the image</span>
+        <span class="n">step</span> <span class="o">=</span> <span class="n">medianStep</span><span class="o">/</span><span class="mi">10</span>
+        <span class="c1">#Egde is 0 and we add to it</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">extrapolationLimitUpper</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">+</span> <span class="n">step</span>
+
+        <span class="c1">#Egde for lower is based on shape size and the axis</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">extrapolationLimitLower</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">axis</span><span class="o">.</span><span class="n">value</span><span class="p">]</span> <span class="o">-</span> <span class="n">step</span>
+
+
+        <span class="c1">#Do calculations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">availableUpper</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">availableLower</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">extendable</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__calcExtendable</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__calcAvailability</span><span class="p">()</span>
+
+<div class="viewcode-block" id="LinearFit.PredictScalar">
+<a class="viewcode-back" href="../../dataObjects.html#dataObjects.LinearFit.LinearFit.PredictScalar">[docs]</a>
+    <span class="k">def</span> <span class="nf">PredictScalar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">scalar</span><span class="p">:</span><span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="o">|</span><span class="n">Point</span><span class="p">:</span>
+        <span class="c1">#Check input scalar</span>
+        <span class="n">valid</span><span class="p">,</span><span class="n">point</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__checkPredictionIsValid</span><span class="p">(</span><span class="n">scalar</span><span class="p">)</span>
+        <span class="k">if</span><span class="p">(</span><span class="ow">not</span> <span class="n">valid</span><span class="p">):</span> 
+            <span class="k">if</span><span class="p">(</span><span class="n">point</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span> <span class="k">return</span> <span class="o">-</span><span class="mf">1.0</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">point</span>
+
+        <span class="c1">#Wrap in numpy array so it can be inserted into fit </span>
+        <span class="n">predictionInput</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">scalar</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1">#Make prediction from linear fit</span>
+        <span class="n">prediction</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">predictionInput</span><span class="p">)</span>
+
+        <span class="c1">#Take index 0 to make a float</span>
+        <span class="k">return</span> <span class="n">prediction</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span></div>
+
+
+    <span class="k">def</span> <span class="nf">__checkPredictionIsValid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="nb">input</span><span class="p">:</span><span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="n">Point</span><span class="o">|</span><span class="kc">None</span><span class="p">]:</span>
+        <span class="c1">#Check if prediction does not already exist</span>
+        <span class="n">isValid</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="c1">#Check through row or column and depending on axis - bheck both line and extendable </span>
+
+        <span class="c1">#Check the independet value - x</span>
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="o">==</span> <span class="n">Axis</span><span class="o">.</span><span class="n">X</span><span class="p">):</span>
+            <span class="c1">#Check line</span>
+            <span class="k">for</span> <span class="n">cr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="p">:</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">cr</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="mi">5</span> <span class="o">&lt;=</span> <span class="nb">input</span> <span class="o">&lt;=</span> <span class="n">cr</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">):</span>
+                    <span class="n">isValid</span> <span class="o">=</span> <span class="kc">False</span>
+
+                    <span class="c1">#Return extrapolation is not valid and None because it is already in the line</span>
+                    <span class="k">return</span> <span class="p">[</span><span class="n">isValid</span><span class="p">,</span><span class="kc">None</span><span class="p">]</span>
+                
+            <span class="c1">#Check extendable</span>
+            <span class="k">for</span> <span class="n">cr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">extendable</span><span class="p">:</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">cr</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="mi">5</span> <span class="o">&lt;=</span> <span class="nb">input</span> <span class="o">&lt;=</span> <span class="n">cr</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="mi">5</span><span class="p">):</span>
+                    <span class="n">isValid</span> <span class="o">=</span> <span class="kc">False</span>
+                    
+                    <span class="c1">#Return extrapolation is not valid and what point already exist</span>
+                    <span class="k">return</span> <span class="p">[</span><span class="n">isValid</span><span class="p">,</span> <span class="n">cr</span><span class="p">]</span>
+                
+        
+        <span class="c1">#check the independet value - y</span>
+        <span class="k">elif</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="o">==</span> <span class="n">Axis</span><span class="o">.</span><span class="n">Y</span><span class="p">):</span>
+            <span class="c1">#Check line</span>
+            <span class="k">for</span> <span class="n">cr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="p">:</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">cr</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="mi">5</span> <span class="o">&lt;=</span> <span class="nb">input</span> <span class="o">&lt;=</span> <span class="n">cr</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mi">5</span><span class="p">):</span>
+                    <span class="n">isValid</span> <span class="o">=</span> <span class="kc">False</span>
+
+                    <span class="c1">#Return extrapolation is not valid and None because it is already in the line</span>
+                    <span class="k">return</span> <span class="p">[</span><span class="n">isValid</span><span class="p">,</span><span class="kc">None</span><span class="p">]</span>
+                
+            <span class="c1">#Check extendable</span>
+            <span class="k">for</span> <span class="n">cr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">extendable</span><span class="p">:</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">cr</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="mi">5</span> <span class="o">&lt;=</span> <span class="nb">input</span> <span class="o">&lt;=</span> <span class="n">cr</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="mi">5</span><span class="p">):</span>
+                    <span class="n">isValid</span> <span class="o">=</span> <span class="kc">False</span>
+
+                    <span class="c1">#Return extrapolation is not valid and what point already exist</span>
+                    <span class="k">return</span> <span class="p">[</span><span class="n">isValid</span><span class="p">,</span> <span class="n">cr</span><span class="p">]</span>
+        
+        <span class="c1">#Gets here if all is valid</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">isValid</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">__calcExtendable</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1">#Check extendable line points based on axis</span>
+        
+        <span class="c1">#ROWS</span>
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="o">==</span> <span class="n">Axis</span><span class="o">.</span><span class="n">X</span><span class="p">):</span>
+            <span class="c1">#Expand rows if possible</span>
+            
+            <span class="c1">#Expand upper</span>
+            <span class="n">up</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">up</span><span class="o">.</span><span class="n">left</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">):</span>
+                <span class="n">up</span> <span class="o">=</span> <span class="n">up</span><span class="o">.</span><span class="n">left</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">extendable</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">up</span><span class="p">)</span>
+
+            <span class="c1">#Expand lower</span>
+            <span class="n">down</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">down</span><span class="o">.</span><span class="n">right</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">):</span>
+                <span class="n">down</span> <span class="o">=</span> <span class="n">down</span><span class="o">.</span><span class="n">right</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">extendable</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">down</span><span class="p">)</span>
+        
+        <span class="c1">#COLUMNS</span>
+        <span class="k">elif</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="o">==</span> <span class="n">Axis</span><span class="o">.</span><span class="n">Y</span><span class="p">):</span>
+            <span class="c1">#Expand columns if possible</span>
+
+            <span class="c1">#Expand upper</span>
+            <span class="n">up</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">up</span><span class="o">.</span><span class="n">above</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">):</span>
+                <span class="n">up</span> <span class="o">=</span> <span class="n">up</span><span class="o">.</span><span class="n">above</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">extendable</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">up</span><span class="p">)</span>
+
+            <span class="c1">#Expand lower</span>
+            <span class="n">down</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">line</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">down</span><span class="o">.</span><span class="n">under</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">):</span>
+                <span class="n">down</span> <span class="o">=</span> <span class="n">down</span><span class="o">.</span><span class="n">under</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">extendable</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">down</span><span class="p">)</span>
+
+
+
+    <span class="k">def</span> <span class="nf">__calcAvailability</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1">#Calculate from interpolation limit possible upper and lower points</span>
+
+        <span class="c1">#Check up</span>
+        <span class="n">evalUp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">interpolationLimitUpper</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">evalUp</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">medianStep</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">extrapolationLimitUpper</span><span class="p">):</span>
+            <span class="c1">#Move to next step</span>
+            <span class="n">evalUp</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">medianStep</span>
+
+            <span class="c1">#Calc prediction and make a point</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">PredictScalar</span><span class="p">(</span><span class="n">evalUp</span><span class="p">)</span>
+
+            <span class="c1">#Case if not valid pred == -1.0</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">pred</span> <span class="o">==</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">):</span>
+                <span class="c1">#Do nothing</span>
+                <span class="k">return</span>
+            <span class="c1">#Case if pred is a point already and therefore can be appended</span>
+            <span class="k">elif</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span><span class="n">Point</span><span class="p">)):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">availableUpper</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+            <span class="c1">#X axis</span>
+            <span class="k">elif</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="o">==</span> <span class="n">Axis</span><span class="o">.</span><span class="n">X</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">availableUpper</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="n">evalUp</span><span class="p">,</span><span class="n">pred</span><span class="p">))</span>
+            <span class="c1">#Y axis</span>
+            <span class="k">elif</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="o">==</span> <span class="n">Axis</span><span class="o">.</span><span class="n">Y</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">availableUpper</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span><span class="n">evalUp</span><span class="p">))</span>
+
+        <span class="c1">#Check down</span>
+        <span class="n">evalDown</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">interpolationLimitLower</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">while</span><span class="p">(</span><span class="n">evalDown</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">medianStep</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">extrapolationLimitLower</span><span class="p">):</span>
+            <span class="c1">#Move to next step</span>
+            <span class="n">evalDown</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">medianStep</span>
+            
+            <span class="c1">#Calc prediction and make a point</span>
+            <span class="n">pred</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">PredictScalar</span><span class="p">(</span><span class="n">evalDown</span><span class="p">)</span>
+            
+            <span class="c1">#Case if not valid pred == -1.0</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">pred</span> <span class="o">==</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">):</span>
+                <span class="c1">#Do nothing</span>
+                <span class="k">return</span>
+            <span class="c1">#Case if pred is a point already and therefore can be append</span>
+            <span class="k">elif</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span><span class="n">Point</span><span class="p">)):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">availableLower</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+            <span class="c1">#X axis</span>
+            <span class="k">elif</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="o">==</span> <span class="n">Axis</span><span class="o">.</span><span class="n">X</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">availableLower</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="n">evalDown</span><span class="p">,</span><span class="n">pred</span><span class="p">))</span>
+            <span class="c1">#Y axis</span>
+            <span class="k">elif</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="o">==</span> <span class="n">Axis</span><span class="o">.</span><span class="n">Y</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">availableLower</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span><span class="n">evalDown</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">equation</span>
+    
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">equation</span></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Detector Detection</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Mustafa A..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

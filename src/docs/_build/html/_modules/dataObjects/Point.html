@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dataObjects.Point &#8212; Detector Detection  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=039e1c02" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for dataObjects.Point</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="kn">from</span> <span class="nn">dataObjects.enums.Direction</span> <span class="kn">import</span> <span class="n">Direction</span>
+
+<div class="viewcode-block" id="Point">
+<a class="viewcode-back" href="../../dataObjects.html#dataObjects.Point.Point">[docs]</a>
+<span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
+    <span class="n">x</span><span class="p">:</span><span class="nb">float</span>
+    <span class="n">y</span><span class="p">:</span><span class="nb">float</span>
+
+    <span class="n">above</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Point</span><span class="p">]</span>
+    <span class="n">under</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Point</span><span class="p">]</span>
+    <span class="n">left</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Point</span><span class="p">]</span>
+    <span class="n">right</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Point</span><span class="p">]</span>
+
+    <span class="n">distanceToAbove</span><span class="p">:</span><span class="nb">float</span>
+    <span class="n">distanceToUnder</span><span class="p">:</span><span class="nb">float</span>
+    <span class="n">distanceToLeft</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">distanceToRight</span><span class="p">:</span><span class="nb">float</span>
+
+    <span class="n">isExtrapolated</span><span class="p">:</span><span class="nb">bool</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">x</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+
+        <span class="c1">#DEFAULT:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">above</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">under</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">distanceToAbove</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">distanceToUnder</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">distanceToLeft</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">distanceToRight</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+
+<div class="viewcode-block" id="Point.AddNeighboringPoints">
+<a class="viewcode-back" href="../../dataObjects.html#dataObjects.Point.Point.AddNeighboringPoints">[docs]</a>
+    <span class="k">def</span> <span class="nf">AddNeighboringPoints</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">point</span><span class="p">:</span><span class="n">Point</span><span class="p">,</span><span class="n">position</span><span class="p">:</span><span class="n">Direction</span><span class="p">):</span>
+        <span class="c1">#Check if None</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">point</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span> <span class="k">return</span>
+
+        <span class="c1">#Check if &quot;point&quot; and &quot;self&quot; already know eachother - redundant if a check is done before using this method</span>
+        <span class="n">selfHasPoint</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">GetNeighboringPoints</span><span class="p">()</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+        <span class="n">pointHasSelf</span> <span class="o">=</span> <span class="n">point</span><span class="o">.</span><span class="n">GetNeighboringPoints</span><span class="p">()</span><span class="o">.</span><span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">selfHasPoint</span> <span class="ow">and</span> <span class="n">pointHasSelf</span><span class="p">):</span> <span class="k">return</span>
+
+        <span class="n">distance</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__calcDistance</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="n">position</span> <span class="o">==</span> <span class="n">Direction</span><span class="o">.</span><span class="n">ABOVE</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">above</span> <span class="o">=</span> <span class="n">point</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">distanceToAbove</span> <span class="o">=</span> <span class="n">distance</span>
+
+            <span class="c1">#Also update point given</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__adjustOpposite</span><span class="p">(</span><span class="n">point</span><span class="p">,</span><span class="n">Direction</span><span class="o">.</span><span class="n">UNDER</span><span class="p">,</span><span class="n">distance</span><span class="p">)</span>
+
+        <span class="k">elif</span><span class="p">(</span><span class="n">position</span> <span class="o">==</span> <span class="n">Direction</span><span class="o">.</span><span class="n">UNDER</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">under</span> <span class="o">=</span> <span class="n">point</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">distanceToUnder</span> <span class="o">=</span> <span class="n">distance</span>
+
+            <span class="c1">#Also update point given</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__adjustOpposite</span><span class="p">(</span><span class="n">point</span><span class="p">,</span><span class="n">Direction</span><span class="o">.</span><span class="n">ABOVE</span><span class="p">,</span><span class="n">distance</span><span class="p">)</span>
+
+        <span class="k">elif</span><span class="p">(</span><span class="n">position</span> <span class="o">==</span> <span class="n">Direction</span><span class="o">.</span><span class="n">LEFT</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">point</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">distanceToLeft</span> <span class="o">=</span> <span class="n">distance</span>
+
+            <span class="c1">#Also update point given</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__adjustOpposite</span><span class="p">(</span><span class="n">point</span><span class="p">,</span><span class="n">Direction</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">,</span><span class="n">distance</span><span class="p">)</span>
+
+        <span class="k">elif</span><span class="p">(</span><span class="n">position</span> <span class="o">==</span> <span class="n">Direction</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">point</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">distanceToRight</span> <span class="o">=</span> <span class="n">distance</span>
+
+            <span class="c1">#Also update point given</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">__adjustOpposite</span><span class="p">(</span><span class="n">point</span><span class="p">,</span><span class="n">Direction</span><span class="o">.</span><span class="n">LEFT</span><span class="p">,</span><span class="n">distance</span><span class="p">)</span></div>
+
+    
+<div class="viewcode-block" id="Point.GetNeighboringPoints">
+<a class="viewcode-back" href="../../dataObjects.html#dataObjects.Point.Point.GetNeighboringPoints">[docs]</a>
+    <span class="k">def</span> <span class="nf">GetNeighboringPoints</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Point</span><span class="p">]:</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">above</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">above</span><span class="p">)</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">under</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">under</span><span class="p">)</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="p">)</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">==</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">points</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">points</span></div>
+
+
+
+<div class="viewcode-block" id="Point.GetNeighboringDistances">
+<a class="viewcode-back" href="../../dataObjects.html#dataObjects.Point.Point.GetNeighboringDistances">[docs]</a>
+    <span class="k">def</span> <span class="nf">GetNeighboringDistances</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">distanceToAbove</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">distanceToUnder</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">distanceToLeft</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">distanceToRight</span><span class="p">]</span></div>
+
+
+
+    <span class="k">def</span> <span class="nf">__calcDistance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">point</span><span class="p">:</span><span class="n">Point</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="c1">#Vector calc d(self,point)</span>
+        <span class="n">dx</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">-</span> <span class="n">point</span><span class="o">.</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+        <span class="n">dy</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">-</span> <span class="n">point</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+
+        <span class="n">dxy</span> <span class="o">=</span> <span class="n">dx</span> <span class="o">+</span> <span class="n">dy</span>
+    
+        <span class="n">d</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">dxy</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">d</span>
+    
+
+    <span class="k">def</span> <span class="nf">__adjustOpposite</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">point</span><span class="p">:</span><span class="n">Point</span><span class="p">,</span><span class="n">position</span><span class="p">:</span><span class="n">Direction</span><span class="p">,</span><span class="n">distance</span><span class="p">:</span><span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1">#Should only be called by &quot;AddNeighboringPoints&quot;, since if &quot;this&quot; point has a right point, then the point to right of it must have &quot;this&quot; to the left of it</span>
+        
+        <span class="c1">#point should have &quot;self&quot; added to it</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">position</span> <span class="o">==</span> <span class="n">Direction</span><span class="o">.</span><span class="n">ABOVE</span><span class="p">):</span>
+            <span class="n">point</span><span class="o">.</span><span class="n">above</span> <span class="o">=</span> <span class="bp">self</span>
+            <span class="n">point</span><span class="o">.</span><span class="n">distanceToAbove</span> <span class="o">=</span> <span class="n">distance</span>
+
+        <span class="k">elif</span><span class="p">(</span><span class="n">position</span> <span class="o">==</span> <span class="n">Direction</span><span class="o">.</span><span class="n">UNDER</span><span class="p">):</span>
+            <span class="n">point</span><span class="o">.</span><span class="n">under</span> <span class="o">=</span> <span class="bp">self</span>
+            <span class="n">point</span><span class="o">.</span><span class="n">distanceToUnder</span> <span class="o">=</span> <span class="n">distance</span>
+
+        <span class="k">elif</span><span class="p">(</span><span class="n">position</span> <span class="o">==</span> <span class="n">Direction</span><span class="o">.</span><span class="n">LEFT</span><span class="p">):</span>
+            <span class="n">point</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="bp">self</span>
+            <span class="n">point</span><span class="o">.</span><span class="n">distanceToLeft</span> <span class="o">=</span> <span class="n">distance</span>
+
+        <span class="k">elif</span><span class="p">(</span><span class="n">position</span> <span class="o">==</span> <span class="n">Direction</span><span class="o">.</span><span class="n">RIGHT</span><span class="p">):</span>
+            <span class="n">point</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="bp">self</span>
+            <span class="n">point</span><span class="o">.</span><span class="n">distanceToRight</span> <span class="o">=</span> <span class="n">distance</span>
+
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="n">string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;Center is:</span><span class="se">\n</span><span class="s2">x is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">}</span><span class="se">\n</span><span class="s2">y is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">}</span>
+<span class="s2">                  &quot;&quot;&quot;</span>
+
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">above</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">string</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                      Above is:</span>
+<span class="s2">                      x is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">above</span><span class="o">.</span><span class="n">x</span><span class="si">}</span>
+<span class="s2">                      y is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">above</span><span class="o">.</span><span class="n">y</span><span class="si">}</span>
+<span class="s2">                      distance is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">distanceToAbove</span><span class="si">}</span>
+<span class="s2">                    &quot;&quot;&quot;</span>
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">under</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">string</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                      Under is:</span>
+<span class="s2">                      x is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">under</span><span class="o">.</span><span class="n">x</span><span class="si">}</span>
+<span class="s2">                      y is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">under</span><span class="o">.</span><span class="n">y</span><span class="si">}</span>
+<span class="s2">                      distance is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">distanceToUnder</span><span class="si">}</span>
+<span class="s2">                    &quot;&quot;&quot;</span>
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">left</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">string</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                      Left is:</span>
+<span class="s2">                      x is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">x</span><span class="si">}</span>
+<span class="s2">                      y is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">y</span><span class="si">}</span>
+<span class="s2">                      distance is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">distanceToLeft</span><span class="si">}</span>
+<span class="s2">                    &quot;&quot;&quot;</span>
+        <span class="k">if</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">):</span>
+            <span class="n">string</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">                      Right is:</span>
+<span class="s2">                      x is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">x</span><span class="si">}</span>
+<span class="s2">                      y is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">y</span><span class="si">}</span>
+<span class="s2">                      distance is </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">distanceToRight</span><span class="si">}</span>
+<span class="s2">                    &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">string</span>
+    
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Extrapolated point: (x:</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span><span class="si">}</span><span class="s2">, y:</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isExtrapolated</span> <span class="k">else</span>  <span class="sa">f</span><span class="s2">&quot;Point: (x:</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">)</span><span class="si">}</span><span class="s2">, y:</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">)&quot;</span></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Detector Detection</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Mustafa A..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>models.ReadTxt &#8212; Detector Detection  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=039e1c02" />
+    <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for models.ReadTxt</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">models.interface.ImageReader</span> <span class="kn">import</span> <span class="n">ImageReader</span>
+<span class="kn">from</span> <span class="nn">dataObjects.ImageObject</span> <span class="kn">import</span> <span class="n">ImageObject</span>
+<span class="kn">from</span> <span class="nn">dataObjects.Settings</span> <span class="kn">import</span> <span class="n">Settings</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">cv2</span>
+<span class="kn">from</span> <span class="nn">functions.ImageReadFunctions.ImageReadFuncs</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1">#Concrete</span>
+<div class="viewcode-block" id="ReadTxt">
+<a class="viewcode-back" href="../../models.html#models.ReadTxt.ReadTxt">[docs]</a>
+<span class="k">class</span> <span class="nc">ReadTxt</span><span class="p">(</span><span class="n">ImageReader</span><span class="p">):</span>
+        
+<div class="viewcode-block" id="ReadTxt.ReadImage">
+<a class="viewcode-back" href="../../models.html#models.ReadTxt.ReadTxt.ReadImage">[docs]</a>
+    <span class="k">def</span> <span class="nf">ReadImage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">settings</span><span class="p">:</span> <span class="n">Settings</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ImageObject</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Searches a specific folder for any .txt files and converts them to images/numpy arrays.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        `folder : str`</span>
+<span class="sd">            the folder path were each indivual file path will be extracted.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        `tuple[list[cv2.Mat],list[float]]`</span>
+<span class="sd">            the first `list[cv2.Mat]` contains the detector images.\n</span>
+<span class="sd">            the second `list[float]` contains the distances for marked by each file path.\n</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1">#Find folder</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Searching for the folder: </span><span class="si">{</span><span class="n">settings</span><span class="o">.</span><span class="n">FOLDER</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">path</span> <span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">curdir</span><span class="p">,</span><span class="n">settings</span><span class="o">.</span><span class="n">FOLDER</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Path found: </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        
+        <span class="n">openFolder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;grid&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Open folder: </span><span class="si">{</span><span class="n">openFolder</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1">#Images</span>
+        <span class="n">images</span> <span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">cv2</span><span class="o">.</span><span class="n">Mat</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span> 
+
+        <span class="c1">#Distances</span>
+        <span class="n">distances</span> <span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1">#Extract files</span>
+        <span class="n">files</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">openFolder</span><span class="p">)</span>
+        
+        <span class="c1">#Sort files</span>
+        <span class="n">sortedFiles</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">files</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">GetDistanceFromPath</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">sortedFiles</span><span class="p">:</span>
+            <span class="n">split_tup</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">split_tup</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;.txt&#39;</span><span class="p">):</span>
+            
+                <span class="n">img_array</span> <span class="o">=</span> <span class="n">load_and_correct_images</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">openFolder</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
+
+                <span class="c1">#ShowImage(img_array,&quot;Array as is&quot;)</span>
+
+                <span class="n">clipped_img_array</span> <span class="o">=</span> <span class="n">ClipArray</span><span class="p">(</span><span class="n">img_array</span><span class="p">)</span>
+
+                <span class="c1">#ShowImage(img_array,&quot;inf and nan removed&quot;)</span>
+
+                <span class="c1">#Convert to make using opencv functions possible/easier as some of the methods used do not support 32bit float or 32bit int tif/tiff files</span>
+                <span class="n">ConvertedImage</span> <span class="o">=</span> <span class="n">ConvertTo8U</span><span class="p">(</span><span class="n">clipped_img_array</span><span class="p">)</span>
+
+                <span class="c1">#Autocontrast</span>
+                <span class="n">ConvertedImage</span> <span class="o">=</span> <span class="n">AutoContrast</span><span class="p">(</span><span class="n">ConvertedImage</span><span class="p">)</span>
+
+                <span class="c1">#Save the image</span>
+                <span class="n">images</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ConvertedImage</span><span class="p">)</span>
+                    
+                <span class="c1">#Get distances</span>
+                <span class="n">distance</span> <span class="o">=</span> <span class="n">GetDistanceFromPath</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+                <span class="n">distances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">distance</span><span class="p">)</span>
+
+                <span class="c1">#ShowImage(ConvertedImage, &quot;uint8&quot;)</span>
+        
+        <span class="c1">#Convert to image object</span>
+        <span class="n">imObj</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="n">ImageObject</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">)):</span>
+            <span class="n">imObj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ImageObject</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">distances</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">settings</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">imObj</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Detector Detection</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Mustafa A..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

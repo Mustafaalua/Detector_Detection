@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>dataObjects library &#8212; Detector Detection  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="dataObjects.enums library" href="dataObjects.enums.html" />
+    <link rel="prev" title="Detector_detection module" href="Detector_detection.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="dataobjects-library">
+<h1>dataObjects library<a class="headerlink" href="#dataobjects-library" title="Link to this heading">¶</a></h1>
+<section id="sub-library">
+<h2>Sub-library<a class="headerlink" href="#sub-library" title="Link to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dataObjects.enums.html">dataObjects.enums library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dataObjects.enums.html#module-dataObjects.enums.Axis">Axis enum</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.Axis.Axis"><code class="docutils literal notranslate"><span class="pre">Axis</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.Axis.Axis.X"><code class="docutils literal notranslate"><span class="pre">Axis.X</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.Axis.Axis.Y"><code class="docutils literal notranslate"><span class="pre">Axis.Y</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dataObjects.enums.html#module-dataObjects.enums.Direction">Direction enum</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.Direction.Direction"><code class="docutils literal notranslate"><span class="pre">Direction</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.Direction.Direction.ABOVE"><code class="docutils literal notranslate"><span class="pre">Direction.ABOVE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.Direction.Direction.LEFT"><code class="docutils literal notranslate"><span class="pre">Direction.LEFT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.Direction.Direction.RIGHT"><code class="docutils literal notranslate"><span class="pre">Direction.RIGHT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.Direction.Direction.UNDER"><code class="docutils literal notranslate"><span class="pre">Direction.UNDER</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dataObjects.enums.html#module-dataObjects.enums.ReaderType">ReaderType enum</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.ReaderType.ReaderType"><code class="docutils literal notranslate"><span class="pre">ReaderType</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.ReaderType.ReaderType.NPY"><code class="docutils literal notranslate"><span class="pre">ReaderType.NPY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.ReaderType.ReaderType.TIFF"><code class="docutils literal notranslate"><span class="pre">ReaderType.TIFF</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.ReaderType.ReaderType.TXT"><code class="docutils literal notranslate"><span class="pre">ReaderType.TXT</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dataObjects.enums.html#module-dataObjects.enums.RowsAndColumns">RowsAndColumns enum</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.RowsAndColumns.RowsAndColumns"><code class="docutils literal notranslate"><span class="pre">RowsAndColumns</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.RowsAndColumns.RowsAndColumns.COLUMNS"><code class="docutils literal notranslate"><span class="pre">RowsAndColumns.COLUMNS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.RowsAndColumns.RowsAndColumns.ROWS"><code class="docutils literal notranslate"><span class="pre">RowsAndColumns.ROWS</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="module-dataObjects.ImageObject">
+<span id="imageobject-class"></span><h2>ImageObject class<a class="headerlink" href="#module-dataObjects.ImageObject" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dataObjects.ImageObject.ImageObject">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dataObjects.ImageObject.</span></span><span class="sig-name descname"><span class="pre">ImageObject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">settings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#dataObjects.Settings.Settings" title="dataObjects.Settings.Settings"><span class="pre">Settings</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataObjects/ImageObject.html#ImageObject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.ImageObject.ImageObject" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dataObjects.ImageObject.ImageObject.SetMagnification">
+<span class="sig-name descname"><span class="pre">SetMagnification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">magnification</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/dataObjects/ImageObject.html#ImageObject.SetMagnification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.ImageObject.ImageObject.SetMagnification" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dataObjects.ImageObject.ImageObject.WarpNew">
+<span class="sig-name descname"><span class="pre">WarpNew</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">warpMatrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">targetDistance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataObjects/ImageObject.html#ImageObject.WarpNew"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.ImageObject.ImageObject.WarpNew" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dataObjects.ImageObject.ImageObject.WarpSelf">
+<span class="sig-name descname"><span class="pre">WarpSelf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">warpMatrix</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="_modules/dataObjects/ImageObject.html#ImageObject.WarpSelf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.ImageObject.ImageObject.WarpSelf" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.ImageObject.ImageObject.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.ImageObject.ImageObject.distance" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.ImageObject.ImageObject.image">
+<span class="sig-name descname"><span class="pre">image</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#dataObjects.ImageObject.ImageObject.image" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.ImageObject.ImageObject.magnification">
+<span class="sig-name descname"><span class="pre">magnification</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.ImageObject.ImageObject.magnification" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.ImageObject.ImageObject.settings">
+<span class="sig-name descname"><span class="pre">settings</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#dataObjects.Settings.Settings" title="dataObjects.Settings.Settings"><span class="pre">Settings</span></a></em><a class="headerlink" href="#dataObjects.ImageObject.ImageObject.settings" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.ImageObject.ImageObject.shape">
+<span class="sig-name descname"><span class="pre">shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#dataObjects.ImageObject.ImageObject.shape" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.ImageObject.ImageObject.x">
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#dataObjects.ImageObject.ImageObject.x" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.ImageObject.ImageObject.y">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#dataObjects.ImageObject.ImageObject.y" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-dataObjects.LinFunc">
+<span id="linfunc-class"></span><h2>LinFunc class<a class="headerlink" href="#module-dataObjects.LinFunc" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dataObjects.LinFunc.LinFunc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dataObjects.LinFunc.</span></span><span class="sig-name descname"><span class="pre">LinFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataObjects/LinFunc.html#LinFunc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.LinFunc.LinFunc" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinFunc.LinFunc.a">
+<span class="sig-name descname"><span class="pre">a</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.LinFunc.LinFunc.a" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinFunc.LinFunc.b">
+<span class="sig-name descname"><span class="pre">b</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.LinFunc.LinFunc.b" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-dataObjects.LinearFit">
+<span id="linearfit-class"></span><h2>LinearFit class<a class="headerlink" href="#module-dataObjects.LinearFit" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dataObjects.LinearFit.</span></span><span class="sig-name descname"><span class="pre">LinearFit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">LinearRegression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">medianStep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolationLimitUpper</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interpolationLimitLower</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.Axis.Axis" title="dataObjects.enums.Axis.Axis"><span class="pre">Axis</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataObjects/LinearFit.html#LinearFit"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.LinearFit.LinearFit" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit.PredictScalar">
+<span class="sig-name descname"><span class="pre">PredictScalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scalar</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a></span></span><a class="reference internal" href="_modules/dataObjects/LinearFit.html#LinearFit.PredictScalar"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.LinearFit.LinearFit.PredictScalar" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit.availableLower">
+<span class="sig-name descname"><span class="pre">availableLower</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#dataObjects.LinearFit.LinearFit.availableLower" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit.availableUpper">
+<span class="sig-name descname"><span class="pre">availableUpper</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#dataObjects.LinearFit.LinearFit.availableUpper" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit.axis">
+<span class="sig-name descname"><span class="pre">axis</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.Axis.Axis" title="dataObjects.enums.Axis.Axis"><span class="pre">Axis</span></a></em><a class="headerlink" href="#dataObjects.LinearFit.LinearFit.axis" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit.equation">
+<span class="sig-name descname"><span class="pre">equation</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#dataObjects.LinearFit.LinearFit.equation" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit.extendable">
+<span class="sig-name descname"><span class="pre">extendable</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#dataObjects.LinearFit.LinearFit.extendable" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit.extrapolationLimitLower">
+<span class="sig-name descname"><span class="pre">extrapolationLimitLower</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.LinearFit.LinearFit.extrapolationLimitLower" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit.extrapolationLimitUpper">
+<span class="sig-name descname"><span class="pre">extrapolationLimitUpper</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.LinearFit.LinearFit.extrapolationLimitUpper" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">LinearRegression</span></em><a class="headerlink" href="#dataObjects.LinearFit.LinearFit.fit" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit.interpolationLimitLower">
+<span class="sig-name descname"><span class="pre">interpolationLimitLower</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.LinearFit.LinearFit.interpolationLimitLower" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit.interpolationLimitUpper">
+<span class="sig-name descname"><span class="pre">interpolationLimitUpper</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.LinearFit.LinearFit.interpolationLimitUpper" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit.line">
+<span class="sig-name descname"><span class="pre">line</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#dataObjects.LinearFit.LinearFit.line" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit.medianStep">
+<span class="sig-name descname"><span class="pre">medianStep</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.LinearFit.LinearFit.medianStep" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit.r">
+<span class="sig-name descname"><span class="pre">r</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.LinearFit.LinearFit.r" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.LinearFit.LinearFit.shape">
+<span class="sig-name descname"><span class="pre">shape</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#dataObjects.LinearFit.LinearFit.shape" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-dataObjects.Point">
+<span id="point-class"></span><h2>Point class<a class="headerlink" href="#module-dataObjects.Point" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dataObjects.Point.Point">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dataObjects.Point.</span></span><span class="sig-name descname"><span class="pre">Point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataObjects/Point.html#Point"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.Point.Point" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dataObjects.Point.Point.AddNeighboringPoints">
+<span class="sig-name descname"><span class="pre">AddNeighboringPoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="dataObjects.enums.html#dataObjects.enums.Direction.Direction" title="dataObjects.enums.Direction.Direction"><span class="pre">Direction</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataObjects/Point.html#Point.AddNeighboringPoints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.Point.Point.AddNeighboringPoints" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dataObjects.Point.Point.GetNeighboringDistances">
+<span class="sig-name descname"><span class="pre">GetNeighboringDistances</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/dataObjects/Point.html#Point.GetNeighboringDistances"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.Point.Point.GetNeighboringDistances" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dataObjects.Point.Point.GetNeighboringPoints">
+<span class="sig-name descname"><span class="pre">GetNeighboringPoints</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="_modules/dataObjects/Point.html#Point.GetNeighboringPoints"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.Point.Point.GetNeighboringPoints" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Point.Point.above">
+<span class="sig-name descname"><span class="pre">above</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dataObjects.Point.Point.above" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Point.Point.distanceToAbove">
+<span class="sig-name descname"><span class="pre">distanceToAbove</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.Point.Point.distanceToAbove" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Point.Point.distanceToLeft">
+<span class="sig-name descname"><span class="pre">distanceToLeft</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.Point.Point.distanceToLeft" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Point.Point.distanceToRight">
+<span class="sig-name descname"><span class="pre">distanceToRight</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.Point.Point.distanceToRight" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Point.Point.distanceToUnder">
+<span class="sig-name descname"><span class="pre">distanceToUnder</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.Point.Point.distanceToUnder" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Point.Point.isExtrapolated">
+<span class="sig-name descname"><span class="pre">isExtrapolated</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#dataObjects.Point.Point.isExtrapolated" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Point.Point.left">
+<span class="sig-name descname"><span class="pre">left</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dataObjects.Point.Point.left" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Point.Point.right">
+<span class="sig-name descname"><span class="pre">right</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dataObjects.Point.Point.right" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Point.Point.under">
+<span class="sig-name descname"><span class="pre">under</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#dataObjects.Point.Point.under" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Point.Point.x">
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.Point.Point.x" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Point.Point.y">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.Point.Point.y" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-dataObjects.Settings">
+<span id="settings-class"></span><h2>Settings class<a class="headerlink" href="#module-dataObjects.Settings" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dataObjects.Settings.Settings">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dataObjects.Settings.</span></span><span class="sig-name descname"><span class="pre">Settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileType</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">showProgress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gridMilliMeterLength</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">singlePixelSizeMilliMeter</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataObjects/Settings.html#Settings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.Settings.Settings" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Settings.Settings.FILE_TYPE">
+<span class="sig-name descname"><span class="pre">FILE_TYPE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#dataObjects.Settings.Settings.FILE_TYPE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Settings.Settings.FOLDER">
+<span class="sig-name descname"><span class="pre">FOLDER</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#dataObjects.Settings.Settings.FOLDER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Settings.Settings.GRID_MILLIMETER_LENGTH">
+<span class="sig-name descname"><span class="pre">GRID_MILLIMETER_LENGTH</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.Settings.Settings.GRID_MILLIMETER_LENGTH" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Settings.Settings.SCALE">
+<span class="sig-name descname"><span class="pre">SCALE</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.Settings.Settings.SCALE" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Settings.Settings.SHOW_PROGRESS">
+<span class="sig-name descname"><span class="pre">SHOW_PROGRESS</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">bool</span></em><a class="headerlink" href="#dataObjects.Settings.Settings.SHOW_PROGRESS" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Settings.Settings.SINGLE_PIXEL_SIZE_MILLIMETER">
+<span class="sig-name descname"><span class="pre">SINGLE_PIXEL_SIZE_MILLIMETER</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#dataObjects.Settings.Settings.SINGLE_PIXEL_SIZE_MILLIMETER" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-dataObjects.Square">
+<span id="square-class"></span><h2>Square class<a class="headerlink" href="#module-dataObjects.Square" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="dataObjects.Square.Square">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">dataObjects.Square.</span></span><span class="sig-name descname"><span class="pre">Square</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">upperRightCorner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperLeftCorner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerRightCorner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerLeftCorner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dataObjects/Square.html#Square"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.Square.Square" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="dataObjects.Square.Square.CreateLinearFunction">
+<span class="sig-name descname"><span class="pre">CreateLinearFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">point2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dataObjects.LinFunc.LinFunc" title="dataObjects.LinFunc.LinFunc"><span class="pre">LinFunc</span></a></span></span><a class="reference internal" href="_modules/dataObjects/Square.html#Square.CreateLinearFunction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.Square.Square.CreateLinearFunction" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dataObjects.Square.Square.GetCenterPoint">
+<span class="sig-name descname"><span class="pre">GetCenterPoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a></span></span><a class="reference internal" href="_modules/dataObjects/Square.html#Square.GetCenterPoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.Square.Square.GetCenterPoint" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dataObjects.Square.Square.Intersection">
+<span class="sig-name descname"><span class="pre">Intersection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#dataObjects.LinFunc.LinFunc" title="dataObjects.LinFunc.LinFunc"><span class="pre">LinFunc</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">func2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#dataObjects.LinFunc.LinFunc" title="dataObjects.LinFunc.LinFunc"><span class="pre">LinFunc</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a></span></span><a class="reference internal" href="_modules/dataObjects/Square.html#Square.Intersection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dataObjects.Square.Square.Intersection" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Square.Square.lowerLeftCorner">
+<span class="sig-name descname"><span class="pre">lowerLeftCorner</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a></em><a class="headerlink" href="#dataObjects.Square.Square.lowerLeftCorner" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Square.Square.lowerRightCorner">
+<span class="sig-name descname"><span class="pre">lowerRightCorner</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a></em><a class="headerlink" href="#dataObjects.Square.Square.lowerRightCorner" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Square.Square.upperLeftCorner">
+<span class="sig-name descname"><span class="pre">upperLeftCorner</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a></em><a class="headerlink" href="#dataObjects.Square.Square.upperLeftCorner" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="dataObjects.Square.Square.upperRightCorner">
+<span class="sig-name descname"><span class="pre">upperRightCorner</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="#dataObjects.Point.Point" title="dataObjects.Point.Point"><span class="pre">Point</span></a></em><a class="headerlink" href="#dataObjects.Square.Square.upperRightCorner" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Detector Detection</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Detector_detection.html">Detector_detection module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">dataObjects library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">functions package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html">models package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="Detector_detection.html" title="previous chapter">Detector_detection module</a></li>
+      <li>Next: <a href="dataObjects.enums.html" title="next chapter">dataObjects.enums library</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Mustafa A..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/dataObjects.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

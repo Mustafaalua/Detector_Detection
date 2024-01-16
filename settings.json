@@ -1,0 +1,8 @@
+{
+    "folder" : "../20231207_alignment_grid_offset",
+    "type": ".npy",
+    "scale": 1.0,
+    "showProgress": 0,
+    "gridMilliMeterLength": 1.5,
+    "singlePixelSizeMilliMeter":0.055
+}

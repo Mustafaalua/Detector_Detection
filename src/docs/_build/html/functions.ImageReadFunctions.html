@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>functions.ImageReadFunctions library &#8212; Detector Detection  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=4f649999" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=039e1c02" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="models library" href="models.html" />
+    <link rel="prev" title="functions.Detector_detection_functions library" href="functions.Detector_detection_functions.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="functions-imagereadfunctions-library">
+<h1>functions.ImageReadFunctions library<a class="headerlink" href="#functions-imagereadfunctions-library" title="Link to this heading">¶</a></h1>
+<section id="module-functions.ImageReadFunctions.ImageReadFuncs">
+<span id="imagereadfuncs-class"></span><h2>ImageReadFuncs class<a class="headerlink" href="#module-functions.ImageReadFunctions.ImageReadFuncs" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="functions.ImageReadFunctions.ImageReadFuncs.AutoContrast">
+<span class="sig-prename descclassname"><span class="pre">functions.ImageReadFunctions.ImageReadFuncs.</span></span><span class="sig-name descname"><span class="pre">AutoContrast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">im</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mat</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mat</span></span></span><a class="reference internal" href="_modules/functions/ImageReadFunctions/ImageReadFuncs.html#AutoContrast"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#functions.ImageReadFunctions.ImageReadFuncs.AutoContrast" title="Link to this definition">¶</a></dt>
+<dd><p>Automatically applies contrast to an image and returns it</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><cite>im : cv2.Mat</cite></dt><dd><p>the image(<cite>im</cite>) that will be applied contrast to</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><cite>cv2.Mat</cite></dt><dd><p>image with contrast applied to it</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="functions.ImageReadFunctions.ImageReadFuncs.ClipArray">
+<span class="sig-prename descclassname"><span class="pre">functions.ImageReadFunctions.ImageReadFuncs.</span></span><span class="sig-name descname"><span class="pre">ClipArray</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">array</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/functions/ImageReadFunctions/ImageReadFuncs.html#ClipArray"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#functions.ImageReadFunctions.ImageReadFuncs.ClipArray" title="Link to this definition">¶</a></dt>
+<dd><p>Clips values away from array based on percentile.</p>
+<section id="extended-sumamry">
+<h3>Extended Sumamry<a class="headerlink" href="#extended-sumamry" title="Link to this heading">¶</a></h3>
+<p>The clipping is done to values outside 10 - 99 percentile.</p>
+<p>Values such as <cite>nan</cite> are changed to <cite>0</cite> and <cite>inf</cite> are changed to <cite>1</cite></p>
+</section>
+<section id="id1">
+<h3>Parameters<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><cite>array : np.ndarray</cite></dt><dd><p>any form of numpy array with unclipped values.</p>
+</dd>
+</dl>
+</section>
+<section id="id2">
+<h3>Returns<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><cite>np.ndarray</cite></dt><dd><p>the array with values clipped.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="functions.ImageReadFunctions.ImageReadFuncs.ConvertTo8U">
+<span class="sig-prename descclassname"><span class="pre">functions.ImageReadFunctions.ImageReadFuncs.</span></span><span class="sig-name descname"><span class="pre">ConvertTo8U</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">im</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mat</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Mat</span></span></span><a class="reference internal" href="_modules/functions/ImageReadFunctions/ImageReadFuncs.html#ConvertTo8U"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#functions.ImageReadFunctions.ImageReadFuncs.ConvertTo8U" title="Link to this definition">¶</a></dt>
+<dd><p>Takes an image and converts it to uint8.
+Usually to make other cv2 functions work.</p>
+<section id="id3">
+<h3>Parameters<a class="headerlink" href="#id3" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><cite>im : cv2.Mat</cite></dt><dd><p>the image(<cite>im</cite>) to be converted, usually .tiff or .tif.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h3>Returns<a class="headerlink" href="#id4" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><cite>cv2.Mat</cite></dt><dd><p>the converted image.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="functions.ImageReadFunctions.ImageReadFuncs.GetDistanceFromPath">
+<span class="sig-prename descclassname"><span class="pre">functions.ImageReadFunctions.ImageReadFuncs.</span></span><span class="sig-name descname"><span class="pre">GetDistanceFromPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="reference internal" href="_modules/functions/ImageReadFunctions/ImageReadFuncs.html#GetDistanceFromPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#functions.ImageReadFunctions.ImageReadFuncs.GetDistanceFromPath" title="Link to this definition">¶</a></dt>
+<dd><p>Searches path to extract distance along z-axis with underscore(<cite>_</cite>) being the seperator.</p>
+<section id="parameter">
+<h3>Parameter<a class="headerlink" href="#parameter" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><cite>path : str</cite></dt><dd><p>the path that the distance will be extracted from.</p>
+</dd>
+</dl>
+</section>
+<section id="id5">
+<h3>Returns<a class="headerlink" href="#id5" title="Link to this heading">¶</a></h3>
+<dl class="simple">
+<dt><cite>float</cite></dt><dd><p>a value for the distance that the images was taken from.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="functions.ImageReadFunctions.ImageReadFuncs.expand_and_fill_gap_one_image_Medipix">
+<span class="sig-prename descclassname"><span class="pre">functions.ImageReadFunctions.ImageReadFuncs.</span></span><span class="sig-name descname"><span class="pre">expand_and_fill_gap_one_image_Medipix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arr</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_size_px</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="m"><span class="pre">2</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">crop_to_orginal</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="k"><span class="pre">True</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="reference internal" href="_modules/functions/ImageReadFunctions/ImageReadFuncs.html#expand_and_fill_gap_one_image_Medipix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#functions.ImageReadFunctions.ImageReadFuncs.expand_and_fill_gap_one_image_Medipix" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="functions.ImageReadFunctions.ImageReadFuncs.load_and_correct_images">
+<span class="sig-prename descclassname"><span class="pre">functions.ImageReadFunctions.ImageReadFuncs.</span></span><span class="sig-name descname"><span class="pre">load_and_correct_images</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/functions/ImageReadFunctions/ImageReadFuncs.html#load_and_correct_images"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#functions.ImageReadFunctions.ImageReadFuncs.load_and_correct_images" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Detector Detection</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Detector_detection.html">Detector_detection module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataObjects.html">dataObjects library</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="functions.html">functions library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html">models library</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+  <li><a href="functions.html">functions library</a><ul>
+      <li>Previous: <a href="functions.Detector_detection_functions.html" title="previous chapter">functions.Detector_detection_functions library</a></li>
+      <li>Next: <a href="models.html" title="next chapter">models library</a></li>
+  </ul></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Mustafa A..
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/functions.ImageReadFunctions.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

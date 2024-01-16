@@ -70,8 +70,9 @@ To edit the images in the script a matrix is needed by openCV. Here is a simple 
 
 The initial matrix is an eye matrix:
 
+```math
 $\begin{bmatrix}1&0&0\\0&1&0\end{bmatrix}$
-
+```
 1 is used as default scaling number.
 
 The combinations of x and y:

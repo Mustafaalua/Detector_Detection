@@ -76,9 +76,9 @@ $\begin{bmatrix}1&0&0\\0&1&0\end{bmatrix}$
 
 The combinations of x and y:
 ```math
-$\begin{bmatrix}0,0\end{bmatrix}$ -> Scaling for x, defualt is 1.
+\begin{bmatrix}0,0\end{bmatrix} \begin{text}-> Scaling for x, defualt is 1.\end{text}
 ```
-\begin{bmatrix}0,1\end{bmatrix} \begin{text}-> Shearing for y, defualt is 0.\end{text}
+$\begin{bmatrix}0,1\end{bmatrix}$ -> Shearing for y, defualt is 0.
 
 $\begin{bmatrix}0,2\end{bmatrix}$ -> Translation for x, defualt is 0.
 

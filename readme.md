@@ -75,9 +75,9 @@ $\begin{bmatrix}1&0&0\\0&1&0\end{bmatrix}$
 1 is used as default scaling number.
 
 The combinations of x and y:
-
-$\begin{bmatrix}0,0\end{bmatrix} \rightarrow \text{Scaling for x, defualt is 1.}$
-
+```math
+\begin{bmatrix}0,0\end{bmatrix} \rightarrow \text{Scaling for x, defualt is 1.}
+```
 $\begin{bmatrix}0,1\end{bmatrix}$ -> Shearing for y, defualt is 0.
 
 $\begin{bmatrix}0,2\end{bmatrix}$ -> Translation for x, defualt is 0.

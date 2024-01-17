@@ -69,29 +69,32 @@ This same length is found in the script but as pixels instead of mm.
 To edit the images in the script a matrix is needed by openCV. Here is a simple description for each index of x and y.
 
 The initial matrix is an eye matrix:
-
-$\begin{bmatrix}1&0&0\\0&1&0\end{bmatrix}$
-
-1 is used as default scaling number.
-
+```math
+\begin{bmatrix}1&0&0\\0&1&0\end{bmatrix}, \text{  1 is used as default scaling number.}
+```
 The combinations of x and y:
 ```math
 \begin{bmatrix}0,0\end{bmatrix} \rightarrow \text{Scaling for x, defualt is 1.}
 ```
-$\begin{bmatrix}0,1\end{bmatrix}$ -> Shearing for y, defualt is 0.
-
-$\begin{bmatrix}0,2\end{bmatrix}$ -> Translation for x, defualt is 0.
-
-$\begin{bmatrix}1,0\end{bmatrix}$ -> Shearing for x, defualt is 0.
-
-$\begin{bmatrix}1,1\end{bmatrix}$ -> Scaling for y, defualt is 1.
-
-$\begin{bmatrix}1,2\end{bmatrix}$ -> Translation for y, defualt is 0.
-
+```math
+\begin{bmatrix}0,1\end{bmatrix} \rightarrow \text{Shearing for y, defualt is 0.}
+```
+```math
+\begin{bmatrix}0,2\end{bmatrix} \rightarrow \text{Translation for x, defualt is 0.}
+```
+```math
+\begin{bmatrix}1,0\end{bmatrix} \rightarrow \text{Shearing for x, defualt is 0.}
+```
+```math
+\begin{bmatrix}1,1\end{bmatrix} \rightarrow \text{Scaling for y, defualt is 1.}
+```
+```math
+\begin{bmatrix}1,2\end{bmatrix} \rightarrow \text{Translation for y, defualt is 0.}
+```
 Overview with names:
-
-$\begin{bmatrix}ScalingX&ShearingY&TranslationX\\ShearingX&ScalingY&TranslationY\end{bmatrix}$
-
+```math
+\begin{bmatrix}\text{Scaling X}&\text{Shearing Y}&\text{Translation X}\\\text{Shearing X}&\text{Scaling Y}&\text{Translation Y}\end{bmatrix}
+```
 ***
 ## Walkthrough of the general steps of the script
 Here we will see the general and most important steps of the script in finding the correction to the detector.

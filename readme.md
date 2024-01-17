@@ -110,6 +110,7 @@ Second step is processing the DSD (detector-source-distance) by identifying squa
 They are identified by doing bluring, thresholding and finding contours.
 
 This is an example of the process. 
+
 ![Alt text](readmeImages/stepsSquares.png)
 
 The real contours will match the roundness of the corners of each square.

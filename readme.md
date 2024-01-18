@@ -7,6 +7,24 @@ To download the packages required please navigate to the src folder and run the 
 pip install -r requirements.txt
 ```
 
+## Updating documentation
+There are a few simple steps to update the documentation files, and if needed the style and naming can be change in the .rst files. The documentation itself is not needed to understand the code. The script is single-threaded and the docstrings in code are the same used in the documentation.
+
+If new folders are added then an empty \__init__.py need to be added too. models folder can be used as reference setup for .py file. Then a sphinx api call is needed to add new .rst files. This call needs to be made from the src folder.     
+1. ```
+   sphinx-apidoc -o docs .
+   ```
+The new .rst files can be edited to fit however you like the format to be.
+
+Once changes have been made and the docs need to be updated, run this set of commands in the terminal from the src folder to update the html files.
+
+1. ```
+   cd docs
+   ```
+2. ```
+   .\make.bat html
+   ```
+
 ## Settings
 You can adjust the scripts settings via a json file called settings.json located in the Detector_Detection folder.
 

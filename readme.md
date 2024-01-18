@@ -25,6 +25,8 @@ Once changes have been made and the docs need to be updated, run this set of com
    .\make.bat html
    ```
 
+If the html theme needs to be changed, then it can be done in the `docs/conf.py` file under `html_theme`.
+
 ## Settings
 You can adjust the scripts settings via a json file called settings.json located in the Detector_Detection folder.
 

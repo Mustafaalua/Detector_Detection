@@ -64,18 +64,17 @@ Here are some things that are nice to know when reading through the code.
 The examples will mostly be shown in image.
 
 #### Axis
-The Script is written with opencv and the defualt placement of origin is the top left corner of the image.
+The script is written with opencv and the defualt placement of origin is the top left corner of a image.
 
 
 ![!\[Alt text\](XandY.png)](readmeImages/XandYAxis.png)
 ***
 #### Lower and Upper
-Throughout the script upper and lower are mentioned a lot. The first use of upper and lower was done in respective to the y-axis but not value based. It was done by looking at the image. 
+Throughout the script upper and lower are mentioned. The use can be ambiguous depending on what part of the script that is being evaluated. The safest way is to run in debug mode and compare upper and lower thresholds to see orientation used. 
 
-When you look at the bottom of the image and move your eyes up, it was then considered to an upwards movement even though the y value got smaller. That logic did unfortunately not work when looking at the x-axis. 
+When looking at point objects and everything derived from that objects information is done in a specific way. The use of upper and lower was done in respective to the y-axis but not value based. It was done by looking at the image. 
 
-CHECK
-The principle is still the same. When the axis value gets smaller it is considered upper. When the axis value gets larger it is considered lower. 
+When you look at the bottom of the image and move your eyes up, it was then considered to an upwards movement even though the y-value got smaller because of the origin. In case of x-axis the higher x-values are considered lower movement. The following image shows this case.
 
 ![Alt text](readmeImages/UpperAndLower.png)
 ***
@@ -120,7 +119,6 @@ Overview with names:
 Here we will see the general and most important steps of the script in finding the correction to the detector.
 
 #### 1.
-
 First step that happens is reading the images into the script and save as ImageObjects. If more reading methods are needed then add a new .py script in the models folder. The script has to implement the interface ImageReader.py. Afterwards add appropriate element for the new script in the dataObjects/enums/ReaderType.py. 
 Lastly register the new file type in the ReaderFactory.py under models. 
 

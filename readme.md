@@ -1,6 +1,16 @@
 # Getting started
 Before you get started download the required packages to run the script.
 
+The main script to run is src/Detector_detection.py.
+```
+python src/Detector_detection.py
+```
+or 
+```
+cd src
+python Detector_detection.py
+```
+
 ## Installation
 To download the packages required please navigate to the src folder and run the following line in the terminal. 
 ```bash

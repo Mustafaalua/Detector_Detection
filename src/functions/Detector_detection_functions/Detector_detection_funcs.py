@@ -1633,9 +1633,7 @@ def CalcShiftMM(imObj1:ImageObject,imObj2:ImageObject,ShiftMatrix:np.ndarray,max
     """ 
     #Translate shift from pixels to mm
     xShift = CalcShiftPX(ShiftMatrix[0,2],imObj1.settings.GRID_MILLIMETER_LENGTH,imObj1.settings.SINGLE_PIXEL_SIZE_MILLIMETER) #Side opposite
-    yShift = CalcShiftPX(ShiftMatrix[1,2],imObj1.settings.GRID_MILLIMETER_LENGTH,imObj1.settings.SINGLE_PIXEL_SIZE_MILLIMETER) #Side opposite
-    #xShift = CalcShiftPX(imObj1.settings.SINGLE_PIXEL_SIZE_MILLIMETER,ShiftMatrix[0,2])#/imObj1.settings.GRID_MILLIMETER_LENGTH #Side opposite
-    #yShift = CalcShiftPX(imObj1.settings.SINGLE_PIXEL_SIZE_MILLIMETER,ShiftMatrix[1,2])#/imObj1.settings.GRID_MILLIMETER_LENGTH #Side opposite 
+    yShift = CalcShiftPX(ShiftMatrix[1,2],imObj1.settings.GRID_MILLIMETER_LENGTH,imObj1.settings.SINGLE_PIXEL_SIZE_MILLIMETER) #Side opposite 
 
     #Difference in distance
     distance = imObj2.distance - imObj1.distance #Adjacent

@@ -14,7 +14,7 @@ python Detector_detection.py
 ## Installation
 To download the packages required please navigate to the src folder and run the following line in the terminal. 
 ```bash
-pip install -r requirements.txt
+pip install -r src/requirements.txt
 ```
 
 ## Updating documentation

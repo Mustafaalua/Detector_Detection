@@ -205,33 +205,64 @@ This correction shift will be printed both for mean and median correction.
 * **Correction direction:** The output from the script is in mm for both x and y. The problem is, that they do not tell if it's the actual direction. This can depend on if the image is flip at some point or not. This will need testing, where the directions is applied and evaluated manually to later adjust the output. 
 
 
-* **Units in findtranslation REDO:** The function used to translate the pixels to millimeter might not be correct and needs to be evaluated again.
+* **Units in CalcShiftMM:** The function used to translate the pixels to millimeter shift might not be correct and needs to be evaluated again.
 
-    The current function to translate pixels to millimeter is ```TranslatePixeltoMM```.
+    The current function to translate pixels to millimeter shift is ```CalcShiftMM```.
 
     ```python
-    def TranslatePixeltoMM(pixelLength:float,gridMillimeterLength:float,realPixelLength:float) -> float:
-        #units:
-        #         px       *        mm
-        #         --------------------  = px??????????
-        #                  mm
-        return (pixelLength * realPixelLength) / gridMillimeterLength
+    def CalcShiftMM(imObj1:ImageObject,imObj2:ImageObject,ShiftMatrix:np.ndarray,maxDistance:float,dsd:float):
+        #Translate shift from pixels to mm
+        xShift = CalcShiftPX(ShiftMatrix[0,2],imObj1.settings.GRID_MILLIMETER_LENGTH,imObj1.settings.SINGLE_PIXEL_SIZE_MILLIMETER) #Side opposite
+        yShift = CalcShiftPX(ShiftMatrix[1,2],imObj1.settings.GRID_MILLIMETER_LENGTH,imObj1.settings.SINGLE_PIXEL_SIZE_MILLIMETER) #Side opposite 
+
+        #Difference in distance
+        distance = imObj2.distance - imObj1.distance #Adjacent
+
+        #Use inverse tan to find angle 
+        xAngle = np.arctan(xShift/distance)
+        yAngle = np.arctan(yShift/distance)
+
+        #Angle should apply to the triangle from the source to detector dsd/distance * x/y shift
+        mmShiftX = (dsd/distance) * xShift
+        mmShiftY = (dsd/distance) * yShift 
+
+        #mmShiftX = (dsd + imObj1.distance + maxDistance) * np.tan(xAngle)
+        #mmShiftY = (dsd + imObj1.distance + maxDistance) * np.tan(yAngle)
+        
+        # AddSpacePrint()
+        # print("print x shift ",np.round(xShift,3))
+        # print("print y ",np.round(yShift,3))
+        # print("print distance ",np.round(distance,3))
+        # print("angle x",np.round(xAngle,3))
+        # print("angle y",np.round(yAngle,3))
+        # print("mm shift x",np.round(mmShiftX,3))
+        # print("mm shift y",np.round(mmShiftY,3))
+
+        return [mmShiftX,mmShiftY] 
     ```
-    The function consists of 2 constants, that were mentioned in the settings section.
+    The last part of the function is where the biggest doubt is as we have tried two approaches to calculate mmShiftX and mmShiftY. The results from both have not been tested completely to know if it's right or not. We have had two sets of images, where they had a known offset between eachother. When the mm shift was calculated for both images, we would take the difference to see how close the difference was to the true value of the offset. 
 
-    Therefore the return statement usaully looks like the following.
+    The approaches were derived from triangles and the need for the angle and what distances to include is not yet clear. A check-up on the unit calculates of the formula should also be evaluated again.
+
+* **Magnification:** The magnification is used to scale an image onto another image before the shift between them is calculated. The formula looks the following.
     ```python
-    return (pixelLength * 0.055) / 1.5
+    magnification = (length * resizedImg.settings.SINGLE_PIXEL_SIZE_MILLIMETER) / resizedImg.settings.GRID_MILLIMETER_LENGTH # +-1
+    ```
+    It is uncertain whether or not + or - 1 should be included.
+    
+    The formula consists of 2 constants, that were mentioned in the settings section.
+
+    Therefore the formula usaully looks like the following with numbers.
+    ```python
+    (length * 0.055) / 1.5
     ```
     Units:
-    * ```pixelLength``` = [ px ]
+    * ```length``` = [ px ]
     * ```realPixelLength``` = [ mm ]
     * ```gridMillimeterLength``` = [ mm ]
 
-    The function has to use cases in the script, it is used to find magnification and shift. Here is a clear conflict and as magnification is without a unit and shift is with a unit.
-
-    They should be separated. The name ```TranslatePixeltoMM``` should stay in ```CalcShiftMM```. 
-
-* **magnification:** The magnification is used to scale an image onto another image. This has partly some of the same problems as translation.
+    The formula is used in two different parts and one should be careful if one is changed. The first place is, where all the dsd's is processed because we get the magnification too. The second place is, where the image is scaled down to a reference image and the magnification is calculated to check accuracy but is not used afterwards. 
 
 * **Spelling mistakes** The script comments has some spelling mistakes, weird sentences or bad grammar, that need to be run through and corrected. 
+
+* **Better imagery in readme** The images in this file is done with microsoft paint, which was the only immediate editing tool available and could be done with better tools for more consistent images. 

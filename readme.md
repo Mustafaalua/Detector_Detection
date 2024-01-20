@@ -57,7 +57,7 @@ Format of the settings folder:
 `gridMilliMeterLength` is the length of a square on the grid in millimeters.
 ***
 `singlePixelSizeMilliMeter` is the size of the detector pixels in millimeters. 
-
+***
 
 ## Nice to know
 Here are some things that are nice to know when reading through the code.
@@ -81,6 +81,7 @@ When you look at the bottom of the image and move your eyes up, it was then cons
 #### Grid length in mm
 The length that this references is that of a single square on the grid.
 This same length is found in the script but as pixels instead of mm.
+
 ![Alt text](readmeImages/gridmillimeter.png)
 
 ***

@@ -18,9 +18,9 @@ pip install -r src/requirements.txt
 ```
 
 ## Updating documentation
-There are a few simple steps to update the documentation files, and if needed the style and naming can be change in the .rst files. The documentation itself is not needed to understand the code. The script is single-threaded and the docstrings in code are the same used in the documentation.
+There are a few simple steps to update the documentation files, and if needed the style and naming can be changed in the .rst files. The documentation itself is not needed to understand the code. The script is single-threaded and the docstrings in code are the same as used in the documentation.
 
-If new folders are added then an empty \__init__.py need to be added too. models folder can be used as reference setup for .py file. Then a sphinx api call is needed to add new .rst files. This call needs to be made from the src folder.     
+If new folders are added, then an empty \__init__.py need to be added too. models folder can be used as reference setup for .py file. Then a sphinx api call is needed to add new .rst files. This call needs to be made from the src folder.     
 1. ```
    sphinx-apidoc -o docs .
    ```
@@ -38,7 +38,7 @@ Once changes have been made and the docs need to be updated, run this set of com
 If the html theme needs to be changed, then it can be done in the `docs/conf.py` file under `html_theme`.
 
 ## Settings
-You can adjust the scripts settings via a json file called settings.json located in the Detector_Detection folder.
+You can adjust the script's settings via a json file called settings.json located in the Detector_Detection folder.
 
 Format of the settings folder:
 ```bash
@@ -58,7 +58,7 @@ Format of the settings folder:
 ***
 `scale` is the scaling that will be done to the images in the process of finding the DSD (detector-source-distance) with 1.0 being no scaling done. Changing the scaling can give some variance to the results.
 ***
-`showProgress` is boolean type 0 or 1 that indicates whether the scripts should show the images throughout the process or not. 
+`showProgress` is a boolean type 0 or 1 that indicates whether the script should show the images throughout the process or not. 
 
 0: Do not show images. 
 
@@ -71,25 +71,25 @@ Format of the settings folder:
 
 ## Nice to know
 Here are some things that are nice to know when reading through the code.
-The examples will mostly be shown in image.
+The examples will mostly be shown in images.
 
 #### Axis
-The script is written with opencv and the defualt placement of origin is the top left corner of a image.
+The script is written with openCV and the default placement of origin is the top left corner of a image.
 
 
 ![!\[Alt text\](XandY.png)](readmeImages/XandYAxis.png)
 ***
 #### Lower and Upper
-Throughout the script upper and lower are mentioned. The use can be ambiguous depending on what part of the script that is being evaluated. The safest way is to run in debug mode and compare upper and lower thresholds to see orientation used. 
+Throughout the script upper and lower are mentioned. The use can be ambiguous depending on what part of the script is being evaluated. The safest way is to run in debug mode and compare upper and lower thresholds to see orientation used. 
 
-When looking at point objects and everything derived from that objects information is done in a specific way. The use of upper and lower was done in respective to the y-axis but not value based. It was done by looking at the image. 
+When looking at point objects and everything derived from that object's information is done in a specific way. The use of upper and lower was done in respective to the y-axis but not value based. It was done by looking at the image. 
 
-When you look at the bottom of the image and move your eyes up, it was then considered to an upwards movement even though the y-value got smaller because of the origin. In case of x-axis the higher x-values are considered lower movement. The following image shows this case.
+When you look at the bottom of the image and move your eyes up, it was then considered to be an upwards movement even though the y-value got smaller because of the origin. In the case of x-axis the higher x-values are also considered lower movement. The following image shows this case.
 
 ![Alt text](readmeImages/UpperAndLower.png)
 ***
 #### Grid length in mm
-The length that this references is that of a single square on the grid.
+The length that this reference is that of a single square on the grid.
 This same length is found in the script but as pixels instead of mm.
 
 ![Alt text](readmeImages/gridmillimeter.png)
@@ -104,24 +104,24 @@ The initial matrix is an eye matrix:
 ```
 The combinations of x and y:
 ```math
-\begin{bmatrix}0,0\end{bmatrix} \rightarrow \text{Scaling for x, defualt is 1.}
+\begin{bmatrix}0,0\end{bmatrix} \rightarrow \text{Scaling for x, default is 1.}
 ```
 ```math
-\begin{bmatrix}0,1\end{bmatrix} \rightarrow \text{Shearing for y, defualt is 0.}
+\begin{bmatrix}0,1\end{bmatrix} \rightarrow \text{Shearing for y, default is 0.}
 ```
 ```math
-\begin{bmatrix}0,2\end{bmatrix} \rightarrow \text{Translation for x, defualt is 0.}
+\begin{bmatrix}0,2\end{bmatrix} \rightarrow \text{Translation for x, default is 0.}
 ```
 ```math
-\begin{bmatrix}1,0\end{bmatrix} \rightarrow \text{Shearing for x, defualt is 0.}
+\begin{bmatrix}1,0\end{bmatrix} \rightarrow \text{Shearing for x, default is 0.}
 ```
 ```math
-\begin{bmatrix}1,1\end{bmatrix} \rightarrow \text{Scaling for y, defualt is 1.}
+\begin{bmatrix}1,1\end{bmatrix} \rightarrow \text{Scaling for y, default is 1.}
 ```
 ```math
-\begin{bmatrix}1,2\end{bmatrix} \rightarrow \text{Translation for y, defualt is 0.}
+\begin{bmatrix}1,2\end{bmatrix} \rightarrow \text{Translation for y, default is 0.}
 ```
-Overview with names:
+Overview with variable names:
 ```math
 \begin{bmatrix}\text{Scaling X}&\text{Shearing Y}&\text{Translation X}\\\text{Shearing X}&\text{Scaling Y}&\text{Translation Y}\end{bmatrix}
 ```
@@ -130,13 +130,12 @@ Overview with names:
 Here we will see the general and most important steps of the script in finding the correction to the detector.
 
 #### 1.
-First step that happens is reading the images into the script and save as ImageObjects. If more reading methods are needed then add a new .py script in the models folder. The script has to implement the interface ImageReader.py. Afterwards add appropriate element for the new script in the dataObjects/enums/ReaderType.py. 
-Lastly register the new file type in the ReaderFactory.py under models. 
+The first step that happens is reading the images into the script and saving them as ImageObjects. If more reading methods are needed, then add a new .py script in the models folder. The script must implement the interface ImageReader.py. Afterwards add appropriate adjustments for the new file .py in the dataObjects/enums/ReaderType.py. Lastly register the new file type in the ReaderFactory.py under models.
 
 #### 2.
-Second step is processing the DSD (detector-source-distance) by identifying squares and use them as reference to find other squares.
+The second step is processing the DSD (detector-source-distance) by identifying squares and using them as reference to find other squares.
 
-They are identified by doing bluring, thresholding and finding contours.
+They are identified by blurring, thresholding and finding contours.
 
 This is an example of the process. 
 
@@ -153,15 +152,15 @@ That is because each pair of points is used to cross over the center of the 2x2 
 
 ![Alt text](readmeImages/stepsCross.png)
 
-This is done for each pair that can be found on the image.
+This is done for each pair that can be found in the image.
 
-This creates a new set of points that are on the center of each crossover.
+This creates a new set of points that are at the center of each crossover.
 
 ![Alt text](readmeImages/stepsCrossovers.png)
 
-If these points meet certain conditions then the script will try to extrapolate them where a 2x2 pair was not possible. This will add new points to the set.
+If these points meet certain conditions, then the script will try to extrapolate them where a 2x2 pair was not possible. This will add new points to the set.
 
-For this example we will not simulate extrapolation.
+For this example, we will not simulate extrapolation.
 
 These points will be used to create a big square around the outermost points.
 
@@ -169,22 +168,22 @@ These points will be used to create a big square around the outermost points.
 
 This big square has a pixel area that fits 4 squares. Here we can find the length of each square that matches the size of "Grid length in mm" section but in pixels instead of mm.
 
-The lowest distance that the image was taken at that usually is 0 mm and is used as a baseline for both distance and length when calculating DSD. 
+The lowest distance that the image was taken at usually is 0 mm and is used as a baseline for both distance and length when calculating DSD. 
 
-The process of processing DSD includes finding the magnification and that is added to the ImageObject attribute. This will be used in step 3.
+The process of processing DSD includes finding the magnification and adding it to the ImageObject attribute for later use.
 
 #### 3.
-Third step is processing the shift between the images in pixels. This is done through cross correlation between the images to find a common spot between them.
+The third step is processing the shift between the images in pixels. This is done through cross correlation between the images to find a common spot between them.
 
-When comparing images to eachother the ones with lower distances will always be more zoomed out then the higher distances. Therefore the lower distance has to be changed to fit the higher distance.
+When comparing images to each other the ones with lower distances will always be more zoomed out than the higher distances. Therefore, the lower distance must be changed to fit the higher distance.
 
-This is done by looking at the magnifications and change the scale of the lower distance image based on the difference of magnification.
+This is done by looking at the magnifications and changing the scale of the lower distance image based on the difference of magnification.
 
-The scale needs to occur with a translation of the x and y to center the image again. This is because the scaling move the image without taking the original center into account.
+The scale needs to occur with a translation of the x and y to center the image again. This is because the scaling moves the image without taking the original center into account.
 
-When the images have similiar magnification the calculations of the shift can begin.
+When the images have similar magnification the calculations of the shift can begin.
 
-The set up for taking the images is a 3D-printed plastic stand. The stand can hold the physical grid with plastic behind, except a small 1 mm hole. This creates a spot where the beam attenuates less than the rest.
+The set up for taking the images is a 3D-printed plastic stand. The stand can hold the physical grid with plastic behind it, except a small 1 mm hole. This creates a spot where the beam attenuates less than the rest.
 
 ![Alt text](readmeImages/stepsHole.png)
 
@@ -192,20 +191,20 @@ On the final image this appears as higher pixel values than the rest. The red ci
 
 With simple thresholding and some filtering, we can discern this spot from the rest of the image. Since all images have this spot, we can use it as reference to correlate the images.
 
-An initial correlation is done by taking the medians of the spots for x and y. This gives two sets of x and y that describes where the spot is. The difference is used in a translation matrix to fit the lower distance image to the higher distance image.
+An initial correlation is done by taking the medians of the spots for x and y. This gives two sets of x and y that describe where the spot is. The difference is used in a translation matrix to fit the lower distance image to the higher distance image.
 
-Lastly for the fine tuned correlation is done by ECC (Enhanced Cross Correlation), that is because the ECC function can not handle large difference in the two images and therefore used for the final bit. This usaully yield about 1-3 pixels in correction.
+Lastly, the fine-tuned correlation is done by ECC (Enhanced Cross Correlation), that is because the ECC function cannot handle large difference in the two images and therefore used for the final bit. This usually yields about 1-3 pixels in correction.
 
-We end up with sets of matrices that describes the needed translation/shift from one image the the other. 
+We end up with sets of matrices that describe the needed translation/shift from one image to the other. 
 
 #### 4.
-Final step is taking the shift and turning it into a correction in mm instead of pixels.
+The last step is taking the shift and turning it into a correction in mm instead of pixels.
 
-We are not 100% sure about this process because it is not tested yet.
+We are not 100% sure about this process because it has not been tested yet.
 
 The process of converting the shift to mm is done by using `gridMilliMeterLength` and `singlePixelSizeMilliMeter`.
 
-This output shift tells us how much the image has moved in mm from one to the next. That is not enough information, because we need it to tells us how much the detector has shifted off center.
+This output shift tells us how much the image has moved in mm from one to the next. That is not enough information, because we need it to tell us how much the detector has shifted off center.
 
 The detector shift is found by considering a triangle from the source to the detector for both x and y to create a vector. The relations between the distances in the images and the DSD and the shift found before is used to calculate the correction shift.
 
@@ -213,12 +212,12 @@ This correction shift will be printed both for mean and median correction.
 
 ***
 ## TODO
-* **Correction direction:** The output from the script is in mm for both x and y. The problem is, that they do not tell if it's the actual direction. This can depend on if the image is flip at some point or not. This will need testing, where the directions is applied and evaluated manually to later adjust the output. 
+* **Correction direction:** The output from the script is in mm for both x and y. The problem is that they do not tell if it is the actual direction. This can depend on if the image is flip at some point or not. This will need testing, where the directions are applied and evaluated manually to later adjust the output. 
 
 
 * **Units in CalcShiftMM:** The function used to translate the pixels to millimeter shift might not be correct and needs to be evaluated again.
 
-    The current function to translate pixels to millimeter shift is ```CalcShiftMM```.
+    The current function to translate pixels to millimeter shift is. ```CalcShiftMM```.
 
     ```python
     def CalcShiftMM(imObj1:ImageObject,imObj2:ImageObject,ShiftMatrix:np.ndarray,maxDistance:float,dsd:float):
@@ -251,7 +250,7 @@ This correction shift will be printed both for mean and median correction.
 
         return [mmShiftX,mmShiftY] 
     ```
-    The last part of the function is where the biggest doubt is as we have tried two approaches to calculate mmShiftX and mmShiftY. The results from both have not been tested completely to know if it's right or not. We have had two sets of images, where they had a known offset between eachother. When the mm shift was calculated for both images, we would take the difference to see how close the difference was to the true value of the offset. 
+    The last part of the function is where the biggest doubt is as we have tried two approaches to calculate mmShiftX and mmShiftY. The results from both have not been tested completely to know if it's right or not. We have had two sets of images, where they had a known offset between each other. When the mm shift was calculated for both images, we would take the difference to see how close the difference was to the true value of the offset. 
 
     The approaches were derived from triangles and the need for the angle and what distances to include is not yet clear. A check-up on the unit calculates of the formula should also be evaluated again.
 
@@ -272,8 +271,8 @@ This correction shift will be printed both for mean and median correction.
     * ```realPixelLength``` = [ mm ]
     * ```gridMillimeterLength``` = [ mm ]
 
-    The formula is used in two different parts and one should be careful if one is changed. The first place is, where all the dsd's is processed because we get the magnification too. The second place is, where the image is scaled down to a reference image and the magnification is calculated to check accuracy but is not used afterwards. 
+    The formula is used in two distinct parts, and one should be careful if one is changed. The first place is where all the dsd's is processed because we get the magnification too. The second place is, where the image is scaled down to a reference image and the magnification is calculated to check accuracy but is not used afterwards. 
 
-* **Spelling mistakes** The script comments has some spelling mistakes, weird sentences or bad grammar, that need to be run through and corrected. 
+* **Spelling mistakes** The script comments have some spelling mistakes, weird sentences, or bad grammar, which need to be run through and corrected. 
 
-* **Better imagery in readme** The images in this file is done with microsoft paint, which was the only immediate editing tool available and could be done with better tools for more consistent images. 
+* **Better imagery in readme** The images in this file is done with microsoft paint, which is the only immediate editing tool available and could be done with better tools for more consistent images. 

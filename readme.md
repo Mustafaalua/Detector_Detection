@@ -52,7 +52,7 @@ Format of the settings folder:
 }
 ```
 
-`folder` is the path to the folder that contains the images that will be used to determine the correction. The path given should be written with src as current folder.
+`folder` is the path to the folder that contains the images that will be used to determine the correction. The path given should be written with src as current folder. Not all folders can be used and more can of course be added. The reason for some of them not being able to work, is because they have a wire in the grid to be used as reference. That method of reference is outdated and therefore the script can not analyze the grid images with a wire on it.
 ***
 `type` is the file type that the images are saved as. If a type or certain specifics, such as file naming, is not implemented then they can be implemented with ImageReader interface.
 ***

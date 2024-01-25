@@ -16,6 +16,11 @@ To download the packages required please navigate to the src folder and run the 
 ```bash
 pip install -r src/requirements.txt
 ```
+## Documentation
+The documentation can be accessed throught the following file path.
+```bash
+\src\docs\_build\html\index.html
+```
 
 ## Updating documentation
 There are a few simple steps to update the documentation files, and if needed the style and naming can be changed in the .rst files. The documentation itself is not needed to understand the code. The script is single-threaded and the docstrings in code are the same as used in the documentation.

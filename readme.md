@@ -273,6 +273,6 @@ This correction shift will be printed both for mean and median correction.
 
     The formula is used in two distinct parts, and one should be careful if one is changed. The first place is where all the dsd's is processed because we get the magnification too. The second place is, where the image is scaled down to a reference image and the magnification is calculated to check accuracy but is not used afterwards. 
 
-* **Spelling mistakes** The script comments have some spelling mistakes, weird sentences, or bad grammar, which need to be run through and corrected. 
+* **Spelling mistakes** The script comments have some spelling mistakes, weird sentences, or bad grammar, which may need to be run through and corrected. 
 
 * **Better imagery in readme** The images in this file is done with microsoft paint, which is the only immediate editing tool available and could be done with better tools for more consistent images. 

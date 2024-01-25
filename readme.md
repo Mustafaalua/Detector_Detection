@@ -17,7 +17,7 @@ To download the packages required please navigate to the src folder and run the 
 pip install -r src/requirements.txt
 ```
 ## Documentation
-The documentation can be accessed throught the following file path.
+The documentation can be accessed through the following file path.
 ```bash
 \src\docs\_build\html\index.html
 ```
